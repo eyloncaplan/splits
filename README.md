@@ -47,7 +47,7 @@ This results in **decent recall and higher precision** compared to version (1).
 
 This version takes the data from (2) and organizes it into **neutral topics**. Each demographic group’s posts are categorized into:
 
-- **10 neutral categories**
+- **10 neutral topic categories**
 - **20 specific topics per category** (200 total topics)
 - Topics selected via **BM25 retrieval**
 
