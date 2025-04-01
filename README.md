@@ -82,5 +82,3 @@ Full sampling and formatting details are available in the paper.
 ## 📊 Evaluate Your Model/Framework’s Group Theorization!
 
 ---
-
-Let me know if you want to add badges, links, or examples in this README too!
