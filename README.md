@@ -45,15 +45,26 @@ This results in **decent recall and higher precision** compared to version (1).
 
 ### 3. Posts from High-Groupness Seed Users (by Demographic **and** Topic)
 
-This version takes the data from (2) and organizes it into **neutral topics**. Each demographic group’s posts are categorized into:
+This version builds on (2) by organizing each demographic group's posts into **neutral topics**. It's designed to help analyze how different groups discuss a shared set of themes.
 
+**Structure:**
 - **10 neutral topic categories**
 - **20 specific topics per category** (200 total topics)
-- Topics selected via **BM25 retrieval**
+- Topics selected using **BM25 retrieval**
 
-Useful for investigating **topic-based differences** in discourse across demographics.
+This version is especially useful for exploring **topic-based differences in discourse across demographics**. Topic categories, specific topics, and retrieval keywords are available in `[specifics]`.
 
-Topic categories and keywords are listed in `[specifics]`.
+**Features:**
+- `id`: Unique identifier for the post
+- `description`: The specific neutral topic the post was retrieved for
+- `demographic`: The demographic group assigned to the post
+- `content`: The text of the post
+- `metadata`: A dictionary containing post metadata:
+  - `timestamp`: When the post was created
+  - `score`: Reddit score (upvotes - downvotes)
+  - `subreddit`: The subreddit where the post appeared
+  - `user`: The username of the poster
+- `score`: BM25 similarity score between the post and the topic keywords
 
 ---
 
