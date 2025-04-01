@@ -67,7 +67,7 @@ Each instance includes:
 - Inputs to the evaluator module:  
   `(S₁, S₂)`
 
-Samples are drawn from version (3), matched across demographics with **no duplicates**.
+Samples are drawn from version (3), matched across demographics with **no duplicates** on the same split.
 
 Full sampling and formatting details are available in the paper.
 
