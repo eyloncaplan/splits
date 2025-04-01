@@ -29,8 +29,6 @@ This version uses a **very loose** definition of group membership. If a user has
 - `meta`: A dictionary containing additional metadata:
   - `score`: Reddit score (upvotes - downvotes)
 
-Let me know if you'd like this added to the other versions too or want a JSON schema version!
-
 ---
 
 ### 2. Posts from High-Groupness Seed Users (by Demographic)
