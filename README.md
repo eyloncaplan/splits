@@ -17,11 +17,19 @@ There are **four versions** of the dataset. The best version for you depends on 
 
 ### 1. Posts from All Seed Users (by Demographic)
 
-This version uses a **very loose** definition of group membership. If a user has ever posted in one of our labeled seed subreddits, they are considered a *seed user*. This dataset contains **all posts** made by all seed users across **all subreddits** (not just seed subreddits!), labeled by demographic group.
+This version uses a **very loose** definition of group membership. If a user has ever posted in one of our labeled seed subreddits, they are considered a *seed user*. This dataset contains **all posts** made by all seed users across **all subreddits** (not just seed subreddits!), labeled by demographic group. Think of this as a **high-recall, low-precision** dataset of posts labeled by demographic.
 
-Think of this as a **high-recall, low-precision** dataset of posts labeled by demographic.
+**Features:**
+- `id`: Unique identifier for the post  
+- `user`: Reddit username of the author  
+- `timestamp`: Unix timestamp (in milliseconds) of when the post was created  
+- `text`: The body of the post  
+- `demographic`: The demographic label assigned to the post  
+- `subreddit`: The subreddit where the post appeared  
+- `meta`: A dictionary containing additional metadata:
+  - `score`: Reddit score (upvotes - downvotes)
 
-`[specifics]`
+Let me know if you'd like this added to the other versions too or want a JSON schema version!
 
 ---
 
@@ -37,7 +45,7 @@ This version refines (1) by using our **group-ness** metric to select users more
 - Jewish: 90  
 - Hindu/Jain/Sikh: 80  
 
-This results in **decent recall and higher precision** compared to version (1).
+Think of this as a **decent recall and higher precision** compared to version (1).
 
 `[specifics]`
 
