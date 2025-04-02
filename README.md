@@ -43,7 +43,7 @@ This version refines (1) by using our **group-ness** metric to select users more
 - Jewish: 90  
 - Hindu/Jain/Sikh: 80  
 
-Think of this as a **decent recall and higher precision** compared to version (1).
+Think of this as a **decent recall** and **higher precision** version of (1).
 
 `[specifics]`
 
