@@ -94,10 +94,9 @@ Samples are drawn from version (3), matched across demographics with **no duplic
 - `switched`: A boolean flag indicating whether the group identities have been swapped:  
   - `False`: `sample_A` corresponds to `demographic_A`, `sample_B` to `demographic_B`  
   - `True`: `sample_A` corresponds to `demographic_B`, `sample_B` to `demographic_A`
-- `example_posts`: A calibration set `u` containing **42 posts** about the topic:  
+- `example_posts`: A calibration set `u` containing **42 posts** (**shuffled and anonymized**) about the topic:  
   - 21 from group A  
   - 21 from group B  
-  Posts are **shuffled and anonymized**.
 
 ---
 
