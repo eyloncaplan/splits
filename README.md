@@ -83,11 +83,21 @@ Each instance includes:
 - Inputs to the evaluator module:  
   `(S₁, S₂)`
 
-Samples are drawn from version (3), matched across demographics with **no duplicates** on the same split.
+Samples are drawn from version (3), matched across demographics with **no duplicates** on the same split. Full sampling details are available in the paper.
 
-Full sampling and formatting details are available in the paper.
-
-`[specifics]`
+**Features:**
+- `description`: A short natural-language description of the neutral topic `t`
+- `demographic_A`: The name of demographic group A (`d_A`)
+- `demographic_B`: The name of demographic group B (`d_B`)
+- `sample_A`: A list of 3 posts written by users from **either** group A or B about the topic (`S₁`)
+- `sample_B`: A list of 3 posts written by users from the **opposite** group (`S₂`)
+- `switched`: A boolean flag indicating whether the group identities have been swapped:  
+  - `False`: `sample_A` corresponds to `demographic_A`, `sample_B` to `demographic_B`  
+  - `True`: `sample_A` corresponds to `demographic_B`, `sample_B` to `demographic_A`
+- `example_posts`: A calibration set `u` containing **42 posts** about the topic:  
+  - 21 from group A  
+  - 21 from group B  
+  Posts are **shuffled and anonymized**.
 
 ---
 
