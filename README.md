@@ -31,7 +31,7 @@ This version uses a **very loose** definition of group membership. If a user has
 
 ### 2. Posts from High-Groupness Seed Users (by Demographic)
 
-This version refines (1) by using our **group-ness** metric to select users more likely to belong to a given demographic. We determine thresholds by analyzing self-identification vs. anti-self-identification rates and selecting the point where they diverge significantly.
+This version refines (1) by using our **group-ness** metric to select users more likely to belong to a given demographic. We determine thresholds by analyzing self-identification vs. anti-self-identification rates and selecting the point where they diverge significantly. Think of this as a **decent recall** and **higher precision** version of (1).
 
 **Group-ness thresholds (percentile cutoff):**
 - Teacher: 75  
@@ -41,11 +41,10 @@ This version refines (1) by using our **group-ness** metric to select users more
 - Jewish: 90  
 - Hindu/Jain/Sikh: 80  
 
-Think of this as a **decent recall** and **higher precision** version of (1).
-
 **Features:**
+
 Identical to (1), but adds
-- `metric_percentile`: Percentile for 'groupness' of the user within their demographic.
+- `metric_percentile`: Percentile for group-ness of the user within their demographic.
 
 ---
 
