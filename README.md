@@ -25,9 +25,7 @@ This version uses a **very loose** definition of group membership. If a user has
 - `timestamp`: Unix timestamp (in milliseconds) of when the post was created  
 - `text`: The body of the post  
 - `demographic`: The demographic label assigned to the post  
-- `subreddit`: The subreddit where the post appeared  
-- `meta`: A dictionary containing additional metadata:
-  - `score`: Reddit score (upvotes - downvotes)
+- `subreddit`: The subreddit where the post appeared
 
 ---
 
@@ -45,7 +43,9 @@ This version refines (1) by using our **group-ness** metric to select users more
 
 Think of this as a **decent recall** and **higher precision** version of (1).
 
-`[specifics]`
+**Features:**
+Identical to (1), but adds
+- `metric_percentile`: Percentile for 'groupness' of the user within their demographic.
 
 ---
 
