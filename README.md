@@ -15,7 +15,7 @@ There are **four versions** of the dataset. The best version for you depends on 
 
 ---
 
-### 1. Posts from All Seed Users (by Demographic)
+### 1. Posts from All Seed Users (by Demographic) ~ 115 GB, 350 million posts
 
 This version uses a **very loose** definition of group membership. If a user has ever posted in one of our labeled seed subreddits, they are considered a *seed user*. This dataset contains **all posts** made by all seed users across **all subreddits** (not just seed subreddits!), labeled by demographic group. Think of this as a **high-recall, low-precision** dataset of posts labeled by demographic.
 
@@ -29,7 +29,7 @@ This version uses a **very loose** definition of group membership. If a user has
 
 ---
 
-### 2. Posts from High-Groupness Seed Users (by Demographic)
+### 2. Posts from High-Groupness Seed Users (by Demographic) ~ 34 GB, 90 million posts
 
 This version refines (1) by using our **group-ness** metric to select users more likely to belong to a given demographic. We determine thresholds by analyzing self-identification vs. anti-self-identification rates and selecting the point where they diverge significantly. Think of this as a **decent recall** and **higher precision** version of (1).
 
@@ -48,7 +48,7 @@ Identical to (1), but adds
 
 ---
 
-### 3. Posts from High-Groupness Seed Users (by Demographic **and** Topic)
+### 3. Posts from High-Groupness Seed Users (by Demographic **and** Topic) ~ 2.6 GB, 3.6 million posts
 
 This version builds on (2) by organizing each demographic group's posts into **neutral topics**. It's designed to help analyze how different groups discuss a shared set of themes.
 
@@ -73,7 +73,7 @@ This version is especially useful for exploring **topic-based differences in dis
 
 ---
 
-### 4. Splits! Dataset for Group Theorization Task
+### 4. Splits! Dataset for Group Theorization Task ~ 3.9 GB, 177 million dataset instances
 
 This is the final version, formatted specifically for the **Group Theorization task**.
 
