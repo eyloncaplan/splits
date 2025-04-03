@@ -68,7 +68,7 @@ This version is especially useful for exploring **topic-based differences in dis
   - `timestamp`: When the post was created
   - `score`: Reddit score (upvotes - downvotes)
   - `subreddit`: The subreddit where the post appeared
-  - `user`: The username of the poster
+  - `user`: The username of the one who posted
 - `score`: BM25 similarity score between the post and the topic keywords
 
 ---
