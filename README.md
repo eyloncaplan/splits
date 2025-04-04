@@ -117,7 +117,5 @@ high_groupness_by_topic = load_dataset("ecaplan/splits", "high_groupness_by_topi
 # dataset version (4)
 splits = load_dataset("ecaplan/splits", "splits")['train']
 ```
-
 ## 📊 Evaluate Your Model/Framework’s Group Theorization!
-
----
+See `tutorial.ipynb`.
