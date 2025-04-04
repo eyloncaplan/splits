@@ -103,7 +103,7 @@ Samples are drawn from version (3), matched across demographics with **no duplic
 ## ⚙️ Setup
 
 ## 📥 Data Download
-The datasets are all on the huggingface hub at huggingface.co/datasets/ecaplan/splits, and are accessible using the `datasets` package. ⚠️ We recommend loading only the necessary datasets, as (1) and (2) are huge, and may take a very long time to download and generate.
+The datasets are all on the huggingface hub at `huggingface.co/datasets/ecaplan/splits`, and are accessible using the `datasets` package. ⚠️ We recommend loading only the necessary datasets, as (1) and (2) are huge, and may take a very long time to download and generate.
 
 ```
 from datasets import load_dataset
