@@ -103,6 +103,20 @@ Samples are drawn from version (3), matched across demographics with **no duplic
 ## ⚙️ Setup
 
 ## 📥 Data Download
+The datasets are all on the huggingface hub at huggingface.co/datasets/ecaplan/splits, and are accessible using the `datasets` package. ⚠️ We recommend loading only the necessary datasets, as (1) and (2) are huge, and may take a very long time to download and generate.
+
+```
+from datasets import load_dataset
+
+# dataset version (1)
+all_seed_user_posts = load_dataset("ecaplan/splits", "all_seed_user_posts")['train']
+# dataset version (2)
+high_groupness_user_posts = load_dataset("ecaplan/splits", "high_groupness_user_posts")['train']
+# dataset version (3)
+high_groupness_by_topic = load_dataset("ecaplan/splits", "high_groupness_by_topic")['train']
+# dataset version (4)
+splits = load_dataset("ecaplan/splits", "splits")['train']
+```
 
 ## 📊 Evaluate Your Model/Framework’s Group Theorization!
 
