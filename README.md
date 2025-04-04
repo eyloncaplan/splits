@@ -73,7 +73,7 @@ This version is especially useful for exploring **topic-based differences in dis
 
 ---
 
-### 4. Splits! Dataset for Group Theorization Task ~ 3.9 GB, 177 million dataset instances
+### 4. Splits! Dataset for Group Theorization Task ~ 3.9 GB, 177 thousand dataset instances
 
 This is the final version, formatted specifically for the **Group Theorization task**.
 
