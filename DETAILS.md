@@ -101,4 +101,4 @@ Each post in versions (3) and (4) is retrieved for a specific neutral topic. Top
 
 ## 📬 Questions?
 
-Feel free to open an issue or reach out via [GitHub](https://github.com/yourusername).
+Feel free to open an issue or reach out via [GitHub](https://github.com/eyloncaplan).
