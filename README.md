@@ -18,7 +18,7 @@ This repository contains the resources described in the **Splits!** paper, inclu
 | 3. High-Groupness by Topic | ~2.6 GB | 3.6M posts | ✅ (refined) | ✅ | ❌ |
 | 4. Splits! | ~3.9 GB | 177K instances | ✅ (refined) | ✅ | ✅ |
 
-See [DETAILS.md](docs/DETAILS.md) for group-ness thresholds, sampling procedure, and detailed schema.
+See [DETAILS.md](DETAILS.md) for group-ness thresholds, sampling procedure, and detailed schema.
 
 ---
 
