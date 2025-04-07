@@ -94,7 +94,7 @@ Each post in versions (3) and (4) is retrieved for a specific neutral topic. Top
 
 - **Version 1**: Broad demographic analysis, exploratory studies  
 - **Version 2**: Precision-sensitive analysis of group language  
-- **Version 3**: Topic-based discourse comparison  
+- **Version 3**: Topic-based and group-based discourse comparison  
 - **Version 4**: Task-based model evaluation and group theorization
 
 ---
