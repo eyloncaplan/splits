@@ -5,117 +5,91 @@ This repository contains the resources described in the **Splits!** paper, inclu
 
 - Demographic-split corpora  
 - Demographic-topic-split corpora  
-- The evaluation method proposed in the paper  
+- The evaluation method proposed in the paper
 
 ---
 
-## 📦 Dataset Versions
+## 📊 Dataset Versions (Summary)
 
-There are **four versions** of the dataset. The best version for you depends on your use case. The versions are listed in order from **least** to **most processed**.
+| Version | Size | # Posts / Instances | Demographic Labels | Topic Labels | Task-Ready Format |
+|--------|------|----------------------|---------------------|--------------|-------------------|
+| 1. All Seed Users | ~115 GB | 350M posts | ✅ | ❌ | ❌ |
+| 2. High-Groupness Users | ~34 GB | 90M posts | ✅ (refined) | ❌ | ❌ |
+| 3. High-Groupness by Topic | ~2.6 GB | 3.6M posts | ✅ (refined) | ✅ | ❌ |
+| 4. Splits! | ~3.9 GB | 177K instances | ✅ (refined) | ✅ | ✅ |
 
----
-
-### 1. Posts from All Seed Users (by Demographic) ~ 115 GB, 350 million posts
-
-This version uses a **very loose** definition of group membership. If a user has ever posted in one of our labeled seed subreddits, they are considered a *seed user*. This dataset contains **all posts** made by all seed users across **all subreddits** (not just seed subreddits!), labeled by demographic group. Think of this as a **high-recall, low-precision** dataset of posts labeled by demographic.
-
-**Features:**
-- `id`: Unique identifier for the post  
-- `user`: Reddit username of the author  
-- `timestamp`: Unix timestamp (in milliseconds) of when the post was created  
-- `text`: The body of the post  
-- `demographic`: The demographic label assigned to the post  
-- `subreddit`: The subreddit where the post appeared
+See [DETAILS.md](docs/DETAILS.md) for group-ness thresholds, sampling procedure, and detailed schema.
 
 ---
 
-### 2. Posts from High-Groupness Seed Users (by Demographic) ~ 34 GB, 90 million posts
+## 📦 Dataset Descriptions
 
-This version refines (1) by using our **group-ness** metric to select users more likely to belong to a given demographic. We determine thresholds by analyzing self-identification vs. anti-self-identification rates and selecting the point where they diverge significantly. Think of this as a **decent recall** and **higher precision** version of (1).
+### 1. Posts from All Seed Users (by Demographic)
 
-**Group-ness thresholds (percentile cutoff):**
-- Teacher: 75  
-- Catholic: 75  
-- Black: 75  
-- Construction Worker: 90  
-- Jewish: 90  
-- Hindu/Jain/Sikh: 80  
-
-**Features:**
-
-Identical to (1), but adds
-- `metric_percentile`: Percentile for group-ness of the user within their demographic.
+Includes **all posts** made by any user who has posted in a labeled seed subreddit.  
+High-recall, low-precision demographic labels.
 
 ---
 
-### 3. Posts from High-Groupness Seed Users (by Demographic **and** Topic) ~ 2.6 GB, 3.6 million posts
+### 2. Posts from High-Groupness Seed Users (by Demographic)
 
-This version builds on (2) by organizing each demographic group's posts into **neutral topics**. It's designed to help analyze how different groups discuss a shared set of themes.
-
-**Structure:**
-- **10 neutral topic categories**
-- **20 specific topics per category** (200 total topics)
-- Topics selected using **BM25 retrieval**
-
-This version is especially useful for exploring **topic-based differences in discourse across demographics**. Topic categories, specific topics, and retrieval keywords are available in `[specifics]`.
-
-**Features:**
-- `id`: Unique identifier for the post
-- `description`: The specific neutral topic the post was retrieved for
-- `demographic`: The demographic group assigned to the post
-- `content`: The text of the post
-- `metadata`: A dictionary containing post metadata:
-  - `timestamp`: When the post was created
-  - `score`: Reddit score (upvotes - downvotes)
-  - `subreddit`: The subreddit where the post appeared
-  - `user`: The username of the one who posted
-- `score`: BM25 similarity score between the post and the topic keywords
+Refines (1) using a **group-ness** metric to select users more likely to belong to a demographic group.  
+Higher precision, decent recall. Group-ness thresholds in [DETAILS.md](docs/DETAILS.md).
 
 ---
 
-### 4. Splits! Dataset for Group Theorization Task ~ 3.9 GB, 177 thousand dataset instances
+### 3. Posts from High-Groupness Seed Users (by Demographic and Topic)
 
-This is the final version, formatted specifically for the **Group Theorization task**.
+Builds on (2) by organizing posts into **neutral topics** using BM25 retrieval.  
+Useful for studying **topic-based differences** across groups.
 
-Each instance includes:
-- Inputs to the user-implemented function `τ`:  
-  `(d_A, d_B, t, u)`  
-- Inputs to the evaluator module:  
-  `(S₁, S₂)`
+---
 
-Samples are drawn from version (3), matched across demographics with **no duplicates** on the same split. Full sampling details are available in the paper.
+### 4. Splits! Dataset for Group Theorization Task
 
-**Features:**
-- `description`: A short natural-language description of the neutral topic `t`
-- `demographic_A`: The name of demographic group A (`d_A`)
-- `demographic_B`: The name of demographic group B (`d_B`)
-- `sample_A`: A list of 3 posts written by users from **either** group A or B about the topic (`S₁`)
-- `sample_B`: A list of 3 posts written by users from the **opposite** group (`S₂`)
-- `switched`: A boolean flag indicating whether the group identities have been swapped:  
-  - `False`: `sample_A` corresponds to `demographic_A`, `sample_B` to `demographic_B`  
-  - `True`: `sample_A` corresponds to `demographic_B`, `sample_B` to `demographic_A`
-- `example_posts`: A calibration set `u` containing **42 posts** (**shuffled and anonymized**) about the topic:  
-  - 21 from group A  
-  - 21 from group B  
+Final version for the **Group Theorization** task.  
+Includes matched sets of posts, topic descriptions, and a balanced, anonymized calibration set.
 
 ---
 
 ## ⚙️ Setup
 
-## 📥 Data Download
-The datasets are all on the huggingface hub at `huggingface.co/datasets/ecaplan/splits`, and are accessible using the `datasets` package. ⚠️ We recommend loading only the necessary datasets, as (1) and (2) are huge, and may take a very long time to download and generate. (Also be sure to place your HF_HOME somewhere with enough space for the caches.)
-
+Install the `datasets` package (via HuggingFace):
+```bash
+pip install datasets
 ```
+
+---
+
+## 📥 Data Download
+
+All versions are hosted at [`ecaplan/splits`](https://huggingface.co/datasets/ecaplan/splits):
+
+```python
 from datasets import load_dataset
 
-# dataset version (1)
-all_seed_user_posts = load_dataset("ecaplan/splits", "all_seed_user_posts")['train']
-# dataset version (2)
-high_groupness_user_posts = load_dataset("ecaplan/splits", "high_groupness_user_posts")['train']
-# dataset version (3)
-high_groupness_by_topic = load_dataset("ecaplan/splits", "high_groupness_by_topic")['train']
-# dataset version (4)
-splits = load_dataset("ecaplan/splits", "splits")['train']
+v1 = load_dataset("ecaplan/splits", "all_seed_user_posts")['train']
+v2 = load_dataset("ecaplan/splits", "high_groupness_user_posts")['train']
+v3 = load_dataset("ecaplan/splits", "high_groupness_by_topic")['train']
+v4 = load_dataset("ecaplan/splits", "splits")['train']
 ```
-## 📊 Evaluate Your Model/Framework’s Group Theorization!
-See `tutorial.ipynb`.
+
+⚠️ Versions (1) and (2) are large—be sure to set your `HF_HOME` to a drive with enough space!
+
+---
+
+## 🚀 Quickstart
+
+1. Install dependencies  
+2. Load your dataset version with `load_dataset(...)`  
+3. Run the demo notebook in `tutorial.ipynb` to evaluate your model  
+
+---
+
+## 📄 Citation
+
+If you use this dataset, please cite the paper:
+
+```
+[Coming soon!]
+```
