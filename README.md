@@ -22,7 +22,7 @@ See [DETAILS.md](DETAILS.md) for group-ness thresholds, sampling procedure, and 
 
 ---
 
-## 📦 Dataset Descriptions
+## 📦 Dataset Versions
 
 ### 1. Posts from All Seed Users (by Demographic)
 
