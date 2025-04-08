@@ -91,5 +91,13 @@ v4 = load_dataset("ecaplan/splits", "splits")['train']
 If you use this dataset, please cite the paper:
 
 ```
-[Coming soon!]
+@misc{caplan2025splitsflexibledatasetevaluating,
+      title={Splits! A Flexible Dataset for Evaluating a Model's Demographic Social Inference}, 
+      author={Eylon Caplan and Tania Chakraborty and Dan Goldwasser},
+      year={2025},
+      eprint={2504.04640},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2504.04640}, 
+}
 ```
