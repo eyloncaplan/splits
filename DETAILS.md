@@ -33,7 +33,7 @@ Thresholds are determined by analyzing self-identification vs. anti-self-identif
 - **20 specific topics per category** (200 total)
 - Topics selected using **BM25 retrieval** based on manually defined keyword prompts
 
-Each post in versions (3) and (4) is retrieved for a specific neutral topic. Topic categories, specific topics, and retrieval keywords are listed in the main paper and included in this repo under `[specifics]`.
+Each post in versions (3) and (4) is retrieved for a specific neutral topic. Topic categories, specific topics, and retrieval keywords are listed in the main paper and included in this repo under `metadata/demographics.json` and `metadata/neutral_topics.json`.
 
 ---
 
