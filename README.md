@@ -1,5 +1,10 @@
-# Splits!  
-## A Flexible Dataset for Evaluating a Model’s Demographic Social Inference
+
+<div align="center">
+
+# Splits! A Flexible Dataset for Evaluating a Model’s Demographic Social Inference
+[![arxiv](https://img.shields.io/badge/arXiv-2504.04640-red)](https://arxiv.org/abs/2504.04640)
+
+</div>
 
 This repository contains the resources described in the **Splits!** paper, including:
 
