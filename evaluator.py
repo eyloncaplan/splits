@@ -6,7 +6,7 @@ from llama_model import LlamaModel
 MAX_CHARS = 2000
 
 class Evaluator:
-    def __init__(self, matching_df, batch_size=8, final_model=None, test=False):
+    def __init__(self, matching_df, batch_size=8, quantize=False, final_model=None, test=False):
         """
         Initializes the Evaluator with a matching DataFrame that includes a 'theory' column,
         and sets up a final classification model.
@@ -41,7 +41,8 @@ class Evaluator:
                     max_new_tokens=400, 
                     temperature=0.001, 
                     top_p=1, 
-                    batch_size=batch_size
+                    batch_size=batch_size,
+                    quantize=quantize,
                 )
             else:
                 self.final_model = final_model

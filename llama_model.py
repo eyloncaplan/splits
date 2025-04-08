@@ -6,7 +6,7 @@ import os
 class LlamaModel(Model):
     def __init__(self, model_name="meta-llama/Llama-3.2-3B-Instruct", 
                  max_new_tokens=400, temperature=0.001, top_p=1,
-                 batch_size=8, **kwargs):
+                 batch_size=8, quantize=False, **kwargs):
         """
         Initializes the Llama model wrapper.
         
@@ -16,6 +16,7 @@ class LlamaModel(Model):
             temperature (float): Sampling temperature.
             top_p (float): Top-p (nucleus sampling) value.
             batch_size (int): How many prompts to process in a single batch.
+            quantize (bool): Whether to use quantization configuration. If True, the model will be loaded with a quantization configuration.
             **kwargs: Additional parameters if needed.
         """
         self.model_name = model_name
@@ -29,16 +30,24 @@ class LlamaModel(Model):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side='left')
         self.tokenizer.pad_token = self.tokenizer.eos_token
-        # self.model = AutoModelForCausalLM.from_pretrained(
-        #     model_name,
-        #     torch_dtype=torch.float16,
-        #     device_map="auto"
-        # ).to(self.device)
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_name,
-            torch_dtype=torch.float16,
-            device_map="auto"
-        )
+
+        # Conditional quantization configuration loading:
+        if quantize:
+            from transformers import BitsAndBytesConfig  # Import only if quantization is needed.
+            quantization_config = BitsAndBytesConfig(llm_int8_enable_fp32_cpu_offload=True)
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_name,
+                device_map="auto",
+                quantization_config=quantization_config,
+                torch_dtype="auto",
+            )
+        else:
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_name,
+                device_map="auto",
+                torch_dtype="auto",
+            )
+
         self.model.generation_config.pad_token_id = self.tokenizer.pad_token_id
 
         super().__init__()
@@ -57,7 +66,6 @@ class LlamaModel(Model):
         responses = []
         for i in range(0, len(prompts), self.batch_size):
             batch_prompts = prompts[i: i + self.batch_size]
-            # inputs = self.tokenizer(batch_prompts, return_tensors="pt", padding=True).to(self.device)
             inputs = self.tokenizer(batch_prompts, return_tensors="pt", padding=True).to('cuda')
             # Get the fixed sequence length in the batch (since left-padding is used)
             prompt_length = inputs["input_ids"].size(1)
