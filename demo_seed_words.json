@@ -1,0 +1,8 @@
+{
+    "jewish": ["Jewish", "Jew", "Judaism", "Jewish holidays", "Torah", "synagogue", "Kosher", "Shabbat", "Rabbi"],
+    "black": ["Black", "African American", "Black history", "Afro-American", "Black people", "Black person"],
+    "teacher": ["teacher", "educator", "education", "teaching", "teach", "schoolteacher"],
+    "construction": ["construction worker", "construction", "builder", "construction site", "contractor", "building", "laborer"],
+    "catholic": ["Catholic", "Catholicism", "Catholic Church", "Mass", "Eucharist", "Catechism", "Catholic priest"],
+    "hindu_jain_sikh": ["Hindu", "Hinduism", "Jain", "Jainism", "Sikh", "Sikhism", "puja", "Shiva", "Vishnu", "ahimsa", "karma", "Gurdwara"]
+}
