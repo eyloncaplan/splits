@@ -3,3 +3,4 @@ pandas==2.2.3
 scipy==1.15.2
 transformers==4.53.2
 torch
+datasets

@@ -1,27 +1,25 @@
-
 <div align="center">
 
-# Splits! A Flexible Dataset for Evaluating a Model’s Demographic Social Inference
+<h1>
+  <img src="other/cat_splits_.png" width="50" style="vertical-align: middle; margin-right: 0px;">
+  Splits! Flexible Sociocultural Linguistic Investigation at Scale
+</h1>
+
 [![arxiv](https://img.shields.io/badge/arXiv-2504.04640-red)](https://arxiv.org/abs/2504.04640)
 
 </div>
 
-This repository contains the resources described in the **Splits!** paper, including:
-
-- Demographic-split corpora  
-- Demographic-topic-split corpora  
-- The evaluation method proposed in the paper
+This repository provides the code and data necessary to quickly get started with the **Splits!** paper. It allows users to quickly explore the sociocultural linguistic differences across demographics and topics using our Lift and Triviality metrics.
 
 ---
 
 ## 📊 Dataset Versions (Summary)
 
-| Version | Size | # Posts / Instances | Demographic Labels | Topic Labels | Task-Ready Format |
-|--------|------|----------------------|---------------------|--------------|-------------------|
-| 1. All Seed Users | ~115 GB | 350M posts | ✅ | ❌ | ❌ |
-| 2. High-Groupness Users | ~34 GB | 90M posts | ✅ (refined) | ❌ | ❌ |
-| 3. High-Groupness by Topic | ~2.6 GB | 3.6M posts | ✅ (refined) | ✅ | ❌ |
-| 4. Splits! | ~3.9 GB | 177K instances | ✅ (refined) | ✅ | ✅ |
+| Version | Size | # Posts / Instances | Demographic Labels | Topic Labels |
+|--------|------|----------------------|---------------------|--------------|
+| 1. All Seed Users | ~115 GB | 350M posts | ✅ | ❌ |
+| 2. High-Groupness Users | ~34 GB | 90M posts | ✅ (less noisy) | ❌ |
+| 3. Splits! | ~2.6 GB | 3.6M posts | ✅ (less noisy) | ✅ |
 
 See [DETAILS.md](DETAILS.md) for group-ness thresholds, sampling procedure, and detailed schema.
 
@@ -39,36 +37,52 @@ High-recall, low-precision demographic labels.
 ### 2. Posts from High-Groupness Seed Users (by Demographic)
 
 Refines (1) using a **group-ness** metric to select users more likely to belong to a demographic group.  
-Higher precision, decent recall. Group-ness thresholds in [DETAILS.md](docs/DETAILS.md).
+Higher precision, decent recall. Group-ness thresholds in [DETAILS.md](DETAILS.md).
 
 ---
 
-### 3. Posts from High-Groupness Seed Users (by Demographic and Topic)
+### 3. Splits!
 
-Builds on (2) by organizing posts into **neutral topics** using BM25 retrieval.  
-Useful for studying **topic-based differences** across groups.
-
----
-
-### 4. Splits! Dataset for Group Theorization Task
-
-Final version for the **Group Theorization** task.  
-Includes matched sets of posts, topic descriptions, and a balanced, anonymized calibration set.
+Builds on (2) by organizing posts into **topics** using ColBERT retrieval. Useful for studying **topic-based differences** across groups.
 
 ---
 
-## ⚙️ Setup
+## 🗂️ Metadata
 
-Install the `datasets` package (via HuggingFace):
-```bash
-pip install datasets
-```
+The full demographic subreddit seed sets, self-ID phrases, and anti-self-ID phrases can be found in `metadata/demographics.json`. All topics and topic keywords can be found in `metadata/topics.json`.
+
+---
+
+## ⚙️ Environment Setup
+
+We use `conda` to provision the base Python and Java (OpenJDK) requirements, and `uv` for fast Python dependency installation.
+
+1. **Create the Conda environment**:
+   ```bash
+   conda create -y -n splits_demo python=3.10 openjdk uv
+   ```
+
+2. **Activate the environment**:
+   ```bash
+   conda activate splits_demo
+   ```
+
+3. **Install dependencies using `uv pip`**:
+   ```bash
+   uv pip install -r requirements.txt
+   ```
 
 ---
 
 ## 📥 Data Download
 
-All versions are hosted at [`ecaplan/splits`](https://huggingface.co/datasets/ecaplan/splits):
+Run the downloaded data script to get the demo data into `lexica/`:
+
+```bash
+./download_data.sh
+```
+
+To access the original full variants of the data remotely directly via HF, you can run the following:
 
 ```python
 from datasets import load_dataset
@@ -76,18 +90,13 @@ from datasets import load_dataset
 v1 = load_dataset("ecaplan/splits", "all_seed_user_posts")['train']
 v2 = load_dataset("ecaplan/splits", "high_groupness_user_posts")['train']
 v3 = load_dataset("ecaplan/splits", "high_groupness_by_topic")['train']
-v4 = load_dataset("ecaplan/splits", "splits")['train']
 ```
-
-⚠️ Versions (1) and (2) are large—be sure to set your `HF_HOME` to a drive with enough space!
 
 ---
 
-## 🚀 Quickstart
+## 🚀 Running the Demo
 
-1. Install dependencies  
-2. Load your dataset version with `load_dataset(...)`  
-3. Run the demo notebook in `tutorial.ipynb` to evaluate your model  
+To run the Lift and Triviality metrics, you just need to run the `splits_metrics_demo.ipynb` notebook! 
 
 ---
 
