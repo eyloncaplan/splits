@@ -6,6 +6,7 @@
 </h1>
 
 [![arxiv](https://img.shields.io/badge/arXiv-2504.04640-red)](https://arxiv.org/abs/2504.04640)
+[![demo](https://img.shields.io/badge/%F0%9F%A4%97%20Demo-HuggingFace-orange)](https://huggingface.co/spaces/ecaplan/splits)
 
 </div>
 

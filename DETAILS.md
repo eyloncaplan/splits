@@ -4,7 +4,6 @@ This document contains additional information about the **Splits!** dataset, inc
 
 - Group-ness thresholds
 - Topic structure
-- Sampling details for the Group Theorization task
 - Field definitions
 
 ---
@@ -27,23 +26,13 @@ Thresholds are determined by analyzing self-identification vs. anti-self-identif
 
 ---
 
-## 📚 Topic Structure (Versions 3 & 4)
+## 📚 Topic Structure (Version 3)
 
 - **10 neutral topic categories**
 - **20 specific topics per category** (200 total)
 - Topics selected using **BM25 retrieval** based on manually defined keyword prompts
 
-Each post in versions (3) and (4) is retrieved for a specific neutral topic. Topic categories, specific topics, and retrieval keywords are listed in the main paper and included in this repo under `metadata/demographics.json` and `metadata/neutral_topics.json`.
-
----
-
-## 🧪 Sampling Procedure for Group Theorization (Version 4)
-
-- Samples are drawn from Version (3)
-- Matched across demographics with **no duplicates** on the same split
-- Inputs for task and evaluation formatted specifically for the Group Theorization task
-- Group identities are optionally **switched** to test whether models make assumptions based on labels
-- Includes a **calibration set** of 42 posts per topic
+Each post in version 3 is retrieved for a specific neutral topic. Topic categories, specific topics, and retrieval keywords are listed in the main paper and included in this repo under `metadata/demographics.json` and `metadata/neutral_topics.json`.
 
 ---
 
@@ -63,7 +52,7 @@ Each post in versions (3) and (4) is retrieved for a specific neutral topic. Top
 
 ---
 
-### Version 3
+### Version 3 (Splits!)
 
 | Field        | Description                                                                                      |
 |--------------|--------------------------------------------------------------------------------------------------|
@@ -76,26 +65,11 @@ Each post in versions (3) and (4) is retrieved for a specific neutral topic. Top
 
 ---
 
-### Version 4 (Splits! for Group Theorization)
-
-| Field            | Description                                                                                                                           |
-|------------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| `description`    | A short natural-language description of the neutral topic `t`                                                                         |
-| `demographic_A`  | The name of demographic group A (`d_A`)                                                                                               |
-| `demographic_B`  | The name of demographic group B (`d_B`)                                                                                               |
-| `sample_A`       | A list of 3 posts written by users from **either** group A or B about the topic (`S₁`)                                               |
-| `sample_B`       | A list of 3 posts written by users from the **opposite** group (`S₂`)                                                                 |
-| `switched`       | A boolean flag indicating whether the group identities have been swapped:<br> - `False`: `sample_A` corresponds to `demographic_A`, `sample_B` to `demographic_B`<br> - `True`: `sample_A` corresponds to `demographic_B`, `sample_B` to `demographic_A` |
-| `example_posts`  | A calibration set `u` containing **42 posts** (**shuffled and anonymized**) about the topic:<br> - 21 from group A<br> - 21 from group B |
-
----
-
 ## 🧭 Suggested Use Cases
 
 - **Version 1**: Broad demographic analysis, exploratory studies  
 - **Version 2**: Precision-sensitive analysis of group language  
 - **Version 3**: Topic-based and group-based discourse comparison  
-- **Version 4**: Evaluation on group theorization task (Splits!)
 
 ---
 
