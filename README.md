@@ -106,10 +106,10 @@ To run the Lift and Triviality metrics, you just need to run the `splits_metrics
 If you use this dataset, please cite the paper:
 
 ```
-@misc{caplan2025splitsflexibledatasetevaluating,
-      title={Splits! A Flexible Dataset for Evaluating a Model's Demographic Social Inference}, 
+@misc{caplan2026splitsflexiblesocioculturallinguistic,
+      title={Splits! Flexible Sociocultural Linguistic Investigation at Scale}, 
       author={Eylon Caplan and Tania Chakraborty and Dan Goldwasser},
-      year={2025},
+      year={2026},
       eprint={2504.04640},
       archivePrefix={arXiv},
       primaryClass={cs.CL},
